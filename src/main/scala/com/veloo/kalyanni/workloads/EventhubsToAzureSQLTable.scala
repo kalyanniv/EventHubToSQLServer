@@ -16,6 +16,7 @@ object EventhubsToAzureSQLTable {
 
   def createStreamingContext(inputOptions: ArgumentMap): StreamingContext = {
 
+    // parameters
     val eventHubsParameters = Map[String, String](
       "eventhubs.namespace" -> inputOptions(Symbol(EventhubsArgumentKeys.EventhubsNamespace)).asInstanceOf[String],
       "eventhubs.name" -> inputOptions(Symbol(EventhubsArgumentKeys.EventhubsName)).asInstanceOf[String],
