@@ -1,0 +1,1 @@
+curl -k --user "admin:Marcon|247" -v -H "Content-Type: application/json" -X POST --data @C:\jetbrains\spark-streaming-data-persistence-examples\files\inputSQL.txt "https://kalyannivsparkcluster.azurehdinsight.net/livy/batches"
