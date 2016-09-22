@@ -66,13 +66,11 @@ object EventhubsToAzureSQLTable {
       .foreachRDD { rdd => rdd.toDF().insertToAzureSql(sqlDatabaseConnectionString, sqlTableName) }
 
     // Count number of events received the past batch
-
     val batchEventCount = eventHubsWindowedStream.count()
 
     batchEventCount.print()
 
     // Count number of events received so far
-
     val totalEventCountDStream = eventHubsWindowedStream.map(m => (StreamStatistics.streamLengthKey, 1L))
     val totalEventCount = totalEventCountDStream.updateStateByKey[Long](StreamStatistics.streamLength)
     totalEventCount.checkpoint(Seconds(inputOptions(Symbol(EventhubsArgumentKeys.BatchIntervalInSeconds))
@@ -118,7 +116,6 @@ object EventhubsToAzureSQLTable {
     sqlDriverConnection.close()
 
     //Create or recreate streaming context
-
     val streamingContext = StreamingContext
       .getOrCreate(inputOptions(Symbol(EventhubsArgumentKeys.CheckpointDirectory)).asInstanceOf[String],
         () => createStreamingContext(inputOptions))
