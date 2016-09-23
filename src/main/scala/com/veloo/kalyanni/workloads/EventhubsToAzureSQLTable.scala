@@ -120,7 +120,6 @@ object EventhubsToAzureSQLTable {
       .getOrCreate(inputOptions(Symbol(EventhubsArgumentKeys.CheckpointDirectory)).asInstanceOf[String],
         () => createStreamingContext(inputOptions))
 
-
     streamingContext.start()
 
     if (inputOptions.contains(Symbol(EventhubsArgumentKeys.TimeoutInMinutes))) {
